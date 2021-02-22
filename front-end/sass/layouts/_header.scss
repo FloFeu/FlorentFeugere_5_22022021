@@ -1,0 +1,15 @@
+header {
+  display: flex;
+  margin: 0 5% 0 5%;
+  justify-content: space-between;
+  .logo__img{
+      width: 200px;
+  }
+  nav {
+      display: flex;
+      align-items: center;
+      .nav__basket{
+        padding-left: 50px;
+      }
+  }
+}
