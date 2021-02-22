@@ -1,15 +1,29 @@
 header {
+  background-color: #202020;
+  padding: 0 3%;
   display: flex;
-  margin: 0 5% 0 5%;
+  flex-wrap: wrap;
   justify-content: space-between;
-  .logo__img{
+  align-items: center;
+  box-shadow: 0 1px 10px black;
+  .logo{
+    img{
       width: 200px;
+    }
   }
-  nav {
-      display: flex;
-      align-items: center;
-      .nav__basket{
-        padding-left: 50px;
+  nav{
+    text-align: right;
+    .active{
+      color: gray;
+    }
+    .nav__order{
+      margin-bottom: 1em;
+    }
+    a{
+      color: $color-primary;
+      .fas{
+        padding-right: 18px;
       }
-  }
-}
+    }
+  }  
+}  
