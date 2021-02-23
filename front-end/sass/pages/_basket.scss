@@ -1,0 +1,113 @@
+.basket {
+  h2 {
+    padding-bottom: 1em;
+  }
+  &__product {
+    padding: 5%;
+    background-color: whitesmoke;
+    display: grid;
+    grid-template-areas:
+      "img . text"
+      "img . price";
+
+    column-gap: 15px;
+    text-align: center;
+    align-items: center;
+    &img {
+      grid-area: img;
+      width: 100%;
+      object-position: center;
+      object-fit: cover;
+    }
+    &details {
+      grid-area: text;
+    }
+    &price {
+      grid-area: price;
+    }
+  }
+  &__price {
+    padding: 1em 0;
+    text-align: right;
+  }
+}
+
+.order {
+  h2 {
+    padding-bottom: 1em;
+  }
+  form {
+    display: flex;
+    flex-flow: column;
+    text-align: center;
+    @include tablet {
+      text-align: initial;
+    }
+
+    div {
+      @include tablet {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1.5em;
+      }
+    }
+    .required {
+      color: red;
+    }
+    label {
+      text-align: left;
+      display: inline-block;
+      width: 100%;
+      padding-top: 15px;
+      padding-bottom: 5px;
+      @include tablet {
+        width: fit-content;
+      }
+    }
+    input,
+    select {
+      margin: 0 auto;
+      width: 300px;
+      box-sizing: border-box;
+      border: 1px solid $bkgd-clr;
+      @include tablet {
+        margin: 0;
+        width: 50%;
+      }
+    }
+    .form__submit {
+      @include tablet {
+        margin: 0 15%;
+      }
+      padding-top: 1em;
+      input {
+        text-align: center;
+        background-color: $bkgd-clr;
+        color: white;
+        border-radius: 15px;
+        padding: 5px;
+        border: none;
+        @include tablet {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+@include desktop {
+  main {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .opening {
+      width: 100%;
+    }
+    .basket {
+      width: 45%;
+    }
+    .order {
+      width: 45%;
+    }
+  }
+}

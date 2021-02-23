@@ -21,8 +21,8 @@
       "img img description"
       "img img ."
       "img img select"
-      "img img price"
       "img img ."
+      "img img price"
       "img img button"
       "img img .";
   }
@@ -43,17 +43,20 @@
   }
   &__text {
     grid-area: description;
-    @include tablet{
+    @include tablet {
       padding: 0 2em;
-
     }
   }
   &__options {
     grid-area: select;
-    select {
+    .options__select {
+      margin-left: 2em;
       border-color: $bkgd-clr;
       border-radius: 15px;
       padding: 0 5px;
+    }
+    label {
+      padding-right: 2em;
     }
   }
   &__price {
