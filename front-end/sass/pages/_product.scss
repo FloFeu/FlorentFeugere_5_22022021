@@ -1,0 +1,71 @@
+.details {
+  display: grid;
+  border: 2px solid $bkgd-clr;
+  padding: 5px;
+  text-align: center;
+  grid-template-areas:
+    "img "
+    "."
+    "title"
+    "description"
+    "."
+    "select"
+    "."
+    "price"
+    "button";
+  @include tablet {
+    grid-template-areas:
+      "img img ."
+      "img img title"
+      "img img . "
+      "img img description"
+      "img img ."
+      "img img select"
+      "img img price"
+      "img img ."
+      "img img button"
+      "img img .";
+  }
+  row-gap: 15px;
+  &__img {
+    grid-area: img;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 0 2px 3px $bkgd-clr;
+    @include tablet {
+      height: 60vh;
+      max-width: 40vw;
+    }
+  }
+  &__name {
+    grid-area: title;
+  }
+  &__text {
+    grid-area: description;
+    @include tablet{
+      padding: 0 2em;
+
+    }
+  }
+  &__options {
+    grid-area: select;
+    select {
+      border-color: $bkgd-clr;
+      border-radius: 15px;
+      padding: 0 5px;
+    }
+  }
+  &__price {
+    grid-area: price;
+  }
+  &__btn {
+    grid-area: button;
+    margin: 0 15%;
+    background-color: $bkgd-clr;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    padding: 5px;
+  }
+}

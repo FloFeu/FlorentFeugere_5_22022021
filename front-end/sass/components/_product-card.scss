@@ -1,4 +1,4 @@
-.table__products{
+.list__products{
     @include tablet{
         display: flex;
         justify-content: center;
@@ -6,8 +6,8 @@
     }
 
     .product{
-        border: 3px solid $bkgd-clr;
-        border-radius: 25px;
+        border: 2px solid $bkgd-clr;
+        border-radius: 15px;
         display: flex;
         justify-content: center;
         align-items: stretch;
@@ -20,6 +20,9 @@
             min-width: 400px;
             margin: 1%;
         }
+        @include desktop{
+            width: 25%;
+        }
         &:hover{
             transition: transform 300ms;
             transform: scale(1.05);
@@ -29,12 +32,12 @@
             object-fit: cover;
             object-position: center;
             height: 180px;
-            width: 45%;
-            border-radius: 20px 0 0 20px;
+            width: 50%;
+            border-radius: 15px 0 0 15px;
             border-right: 1px solid $bkgd-clr;
         }
         &__description{
-            width: 50%;
+            width: 45%;
             display: grid;
             grid-template-rows: 35px 85px 35px;
             row-gap: 10px;

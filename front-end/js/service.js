@@ -3,7 +3,7 @@ const baseURL = 'http://localhost:3000/api';  //URL de l'api définie en constan
 // requête AJAX
 
 function getProducts(uri){
-    var xhr = new XMLHttpRequest();
+    let xhr = new XMLHttpRequest();
     xhr.open('GET', baseURL + uri ); 
     xhr.onreadystatechange = function(){
         if (xhr.readyState == 3){
@@ -23,7 +23,7 @@ function getProducts(uri){
 
 function displayProducts(products){
     for ( var i = 0 ; i < products.length ; i++){
-        document.querySelector(".table__products").innerHTML += `
+        document.querySelector(".list__products").innerHTML += `
         <a href="product.html?id=${products[i]._id}" class="product">
           <img
             src="${products[i].imageUrl}"
