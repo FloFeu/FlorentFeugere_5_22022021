@@ -42,6 +42,7 @@
       object-position: center;
       @include tablet {
           min-width: 140px;
+          height: 250px;
       }
     }
     &__description {

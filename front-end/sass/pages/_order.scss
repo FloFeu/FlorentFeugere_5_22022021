@@ -1,0 +1,19 @@
+.order__recap{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    @include tablet{
+       margin: 0 25%;
+    }
+    .order__header{
+        h2{
+            margin-bottom: 0.5em;
+        }
+        margin-bottom: 1em;
+    }
+    .order__details{
+        p{
+            margin-bottom: 1em;
+        }
+    }
+}

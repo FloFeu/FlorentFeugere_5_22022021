@@ -50,13 +50,17 @@
   &__options {
     grid-area: select;
     .options__select {
-      margin-left: 2em;
+      @include desktop {
+        margin-left: 2em;
+      }
       border-color: $bkgd-clr;
       border-radius: 15px;
       padding: 0 5px;
     }
     label {
-      padding-right: 2em;
+      @include desktop {
+        padding-right: 2em;
+      }
     }
   }
   &__price {

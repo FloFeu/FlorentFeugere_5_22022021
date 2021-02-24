@@ -1,7 +1,7 @@
-const baseURL = 'http://localhost:3000/api';  //URL de l'api définie en constante//
+//URL de l'api définie en constante//
+const baseURL = 'http://localhost:3000/api';
 
 // requête AJAX
-
 function getProducts(uri){
     let xhr = new XMLHttpRequest();
     xhr.open('GET', baseURL + uri ); 
@@ -30,14 +30,10 @@ function displayProducts(products){
             class="product__img"
             alt="appareil photo vintage 1"
           />
-
           <div class="product__description">
             <h2 class="product__name">${products[i].name}</h2>
             <p class="product__text">${products[i].description}</p>
             <p class="product__price"><strong>${products[i].price/100} €</strong></p>
-          </div>
-          <div class="product__anchor">
-            <i class="fas fa-chevron-right"></i>
           </div>
         </a>
         `;

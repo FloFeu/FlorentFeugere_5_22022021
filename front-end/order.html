@@ -34,15 +34,23 @@
         <h1>Confirmation de votre commande</h1>
       </section>
       <section class="order__recap">
-        <h2>Merci d'avoir passé commande chez nous !</h2>
-        <p>Votre commande a bien été prise en compte.
-          Nous vous remercions et restons à votre disposition pour toute demande d'informations.
-          Vous recevrez un mail dès réception de votre règlement.
-        </p>
-
+        <div class="order__header">
+          <h2>Merci d'avoir passé commande chez nous !</h2>
+          <p>
+            Votre commande a bien été prise en compte. Nous vous remercions et
+            restons à votre disposition pour toute demande d'informations. Vous
+            recevrez un mail dès réception de votre règlement.
+          </p>
+        </div>
         <div class="order__details">
-          <p><strong>Identifiant de votre commande : <span id="order__id"></strong></span></p>
-          <p ><strong>Montant de votre commande : <span id="order__price"></span>€</strong></p>
+          <p>
+            Identifiant de votre commande :
+            <span id="order__id"><strong></strong></span>
+          </p>
+          <p>
+            Montant de votre commande :
+            <strong><span id="order__price"></span>€</strong>
+          </p>
         </div>
       </section>
     </main>
@@ -55,5 +63,6 @@
         •
       </div>
     </footer>
+    
   </body>
 </html>
