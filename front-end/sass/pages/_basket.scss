@@ -7,17 +7,22 @@
     background-color: whitesmoke;
     display: grid;
     grid-template-areas:
+      "img . name"
       "img . text"
       "img . price";
 
     column-gap: 15px;
     text-align: center;
     align-items: center;
+
     &img {
       grid-area: img;
       width: 100%;
       object-position: center;
       object-fit: cover;
+    }
+    &name{
+      grid-area: name;
     }
     &details {
       grid-area: text;
