@@ -63,15 +63,19 @@ function displayProduct(data){
 };
 
 function addToCart(){
- let thisProduct = {
+  if (document.getElementById("lense-select").value != ""){
+   let thisProduct = {
    "name": document.querySelector('h2').innerText,
    "price": document.getElementById('productPrice').value,
    "lense": document.getElementById("lense-select").value,
    "imageUrl": document.querySelector('.details__img').src,
    "_id": productId
- };
-
- addToStorage(thisProduct);
+   }
+   addToStorage(thisProduct);
+   document.location.reload();
+ } else {
+   alert('Veuillez choisir une lentille.')
+ }
 }
 
 function addToStorage(product){
@@ -79,12 +83,12 @@ function addToStorage(product){
   let products = [];
   const strProduct = localStorage.getItem('products');
   if (strProduct != null){
-   products = JSON.parse(strProduct);
+     products = JSON.parse(strProduct);
   } 
- products.push(product);
- localStorage.setItem('products', JSON.stringify(products));
+  products.push(product);
+  localStorage.setItem('products', JSON.stringify(products));
 
- alert('Produit ajouté au panier!')
+  alert('Produit ajouté au panier!')
 }
 
 fetchDataProduct();

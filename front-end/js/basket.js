@@ -23,6 +23,22 @@ function displayStorageToPage(data){
                 Lentille : <strong>${data[i].lense}</strong>
             </div>
         </div>
-        `;
+        `;   
     }
+
+    //appeler la fonction somme des prix
+    displaySumOfPrices(data);
+};
+
+
+function displaySumOfPrices(data){
+    let total = 0;
+    // Récupére la somme des prix
+    for (let i = 0; i < data.length ; i++){
+        total += Number(data[i].price)/100;
+    }
+    console.log(total);
+    document.querySelector(".basket__price").innerHTML += `
+    <strong> PRIX TOTAL : ${total} €</strong>
+    `;
 };

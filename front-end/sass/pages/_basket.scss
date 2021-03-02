@@ -7,9 +7,9 @@
     background-color: whitesmoke;
     display: grid;
     grid-template-areas:
-      "img . name"
-      "img . text"
-      "img . price";
+      "img  name"
+      "img  text"
+      "img  price";
 
     column-gap: 15px;
     text-align: center;
