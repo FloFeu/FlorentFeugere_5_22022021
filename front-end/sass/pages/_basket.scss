@@ -7,14 +7,13 @@
     background-color: whitesmoke;
     display: grid;
     grid-template-areas:
-      "img  name"
-      "img  text"
-      "img  price";
-
+    "img  name"
+    "img  text"
+    "img  price";
     column-gap: 15px;
     text-align: center;
     align-items: center;
-
+    position: relative;
     &img {
       grid-area: img;
       width: 100%;
@@ -29,6 +28,30 @@
     }
     &price {
       grid-area: price;
+    }
+    .basket__removeitem{
+      opacity: 0.5;
+      border: 1px solid $bkgd-clr;
+      border-radius: 5px;
+      margin: 0;
+      width: 28px;
+      line-height: 26px;
+      display: inline-block;
+      text-align: center;
+      padding: 0;
+      font-weight: bold;
+      background-color: whitesmoke;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      @include desktop{
+      right: 25px;
+      top: 40px;
+      }
+      &:hover{
+        opacity: 1;
+        cursor: pointer;
+      }
     }
   }
   &__price {

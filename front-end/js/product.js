@@ -79,7 +79,6 @@ function addToCart(){
 }
 
 function addToStorage(product){
-  //  let products = localStorage.getItem('products');
   let products = [];
   const strProduct = localStorage.getItem('products');
   if (strProduct != null){
@@ -87,7 +86,6 @@ function addToStorage(product){
   } 
   products.push(product);
   localStorage.setItem('products', JSON.stringify(products));
-
   alert('Produit ajouté au panier!')
 }
 
