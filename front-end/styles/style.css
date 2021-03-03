@@ -247,6 +247,7 @@ main .opening {
   padding-bottom: 1em;
 }
 .basket__product {
+  margin-bottom: 30px;
   padding: 5%;
   background-color: whitesmoke;
   display: grid;
@@ -255,6 +256,10 @@ main .opening {
   text-align: center;
   align-items: center;
   position: relative;
+  box-shadow: 5px 5px 10px 0px #656565;
+}
+.basket__product .nodisplay {
+  display: none;
 }
 .basket__productimg {
   grid-area: img;
@@ -266,18 +271,20 @@ main .opening {
   grid-area: name;
 }
 .basket__productdetails {
+  max-width: 130px;
   grid-area: text;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .basket__productprice {
   grid-area: price;
 }
 .basket__product .basket__removeitem {
   opacity: 0.5;
-  border: 1px solid #202020;
-  border-radius: 5px;
+  border: none;
   margin: 0;
-  width: 28px;
-  line-height: 26px;
+  width: 18px;
+  line-height: 16px;
   display: inline-block;
   text-align: center;
   padding: 0;
@@ -286,20 +293,47 @@ main .opening {
   position: absolute;
   right: 10px;
   top: 10px;
+  transition: opacity 150ms ease-in;
 }
 @media (min-width: 1025px) {
   .basket__product .basket__removeitem {
-    right: 25px;
-    top: 40px;
+    right: 10px;
+    top: 10px;
   }
 }
 .basket__product .basket__removeitem:hover {
   opacity: 1;
   cursor: pointer;
 }
-.basket__price {
+.basket__under {
   padding: 1em 0;
+  display: flex;
+  flex-direction: column;
   text-align: right;
+}
+@media (min-width: 641px) {
+  .basket__under {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+.basket__under button {
+  width: 50%;
+  align-self: center;
+  opacity: 0.5;
+  padding: 0 1em;
+  margin-bottom: 1em;
+  border: 1px solid #202020;
+  font-weight: 600;
+  transition: opacity 150ms ease-in;
+}
+@media (min-width: 641px) {
+  .basket__under button {
+    margin-bottom: 0;
+  }
+}
+.basket__under button:hover {
+  opacity: 1;
 }
 
 .order h2 {
@@ -389,6 +423,11 @@ main .opening {
     width: 45%;
   }
 }
+#basketempty {
+  text-align: center;
+  margin-top: 1em;
+}
+
 .order__recap {
   display: flex;
   flex-direction: column;

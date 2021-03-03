@@ -32,7 +32,7 @@
         </div>
       </nav>
     </header>
-    <main>
+    <main id="itemsInBasket">
       <section class="opening">
         <h1>Mon panier</h1>
       </section>
@@ -41,7 +41,10 @@
         <h2>Résumé de votre panier</h2>
         <div class="main__basket">
         </div>
-        <div class="basket__price"></div>
+        <div class="basket__under">
+          <button onclick="clearStorage()">VIDER LE PANIER</button>
+          <div class="basket__price"></div>
+        </div>
       </section>
 
       <section class="order">
@@ -436,6 +439,10 @@
         </form>
       </section>
     </main>
+
+    <div  id="basketempty">
+      <h2>Malheureusement, votre panier est vide !</h2>
+    </div>
 
     <footer>
       <div class="footer__a">

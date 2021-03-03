@@ -3,10 +3,15 @@ let produitsPanier = [];
 
 const storageProduit = localStorage.getItem('products');
 if (storageProduit != null) {
+    document.getElementById('basketempty').style.display = "none";
     produitsPanier = JSON.parse(storageProduit);
     displayStorageToPage(produitsPanier);
     console.table(produitsPanier);
+} else {
+    document.getElementById('itemsInBasket').style.display ="none";
+    document.getElementById('basketempty').style.display = "block";
 }
+
 function displayStorageToPage(data){
     for (let i = 0 ; i < data.length ; i++){
         document.querySelector(".main__basket").innerHTML += `
@@ -21,14 +26,13 @@ function displayStorageToPage(data){
             <div class="basket__productdetails">
                 Lentille : <strong>${data[i].lense}</strong>
             </div>
-            <button class="basket__removeitem" id="removeItem" type="button" onclick="removeFromBasket()">
-                X 
+            <button class="basket__removeitem" id="removeItem" type="button" onclick="removeFromBasket(${i})">
+                <i class="far fa-trash-alt"></i>
             </button>
-            <input type="hidden" id="productId" value="${data.indexOf(data[i])}">
+            <div id="productIndex" class="nodisplay">  </div>
+ 
         </div>
         `;
-        console.log(data.indexOf(data[i]))   
-        
     }
     
     //appeler la fonction somme des prix
@@ -51,12 +55,20 @@ function displaySumOfPrices(data){
 
 
 
-function removeFromBasket(){
-    let productId = document.getElementById('productId').value; //valeur renvoyée est tjrs 0, c'est pas ce que je veux
-    console.log(productId);
-    produitsPanier.splice(productId);
-    document.location.reload();
-    
-    
+function removeFromBasket(element){
+console.log(element);                                    //récupération de l'indice du produit dans le tableau 
+    const strProduct = localStorage.getItem('products'); //on récupère le localStorage
+    products = JSON.parse(strProduct);                   //on le parse (products = JSON.parse(localStorage.getItem('products')) aurait marché aussi)
+    products.splice(element, 1);
+    if (products.length == 0){
+        localStorage.clear();
+    } else{                        //on enlève de l'array l'élément grâce à son indice
+        localStorage.setItem('products', JSON.stringify(products)); //On renvoie le nouvel array au localStorage
+    }
+    document.location.reload();                          //rafraichissement de la page
+}
 
+function clearStorage(){
+    localStorage.clear();
+    document.location.reload();
 }
