@@ -72,3 +72,19 @@ function clearStorage(){
     localStorage.clear();
     document.location.reload();
 }
+
+// Récupérer les infos du formulaire
+
+
+
+
+function submitForm(){
+    let formInfos = {
+        "firstName": document.getElementById('firstName').value,
+        "lastName": document.getElementById('lastName').value,
+        "address": document.getElementById('address').value,
+        "city": document.getElementById('city').value,
+        "email": document.getElementById('email').value
+    }
+    console.log(formInfos);
+}

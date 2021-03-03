@@ -5,6 +5,7 @@
     flex-wrap: wrap;
   }
   .product {
+    box-shadow: 5px 5px 10px 0px #656565;
     border: 2px solid $bkgd-clr;
     display: grid;
     grid-template-areas:
