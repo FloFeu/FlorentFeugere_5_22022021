@@ -51,7 +51,7 @@ function displaySumOfPrices(data){
     }
     console.log(total);
     document.querySelector(".basket__price").innerHTML += `
-    <strong> PRIX TOTAL : ${total} €</strong>
+    <strong> PRIX TOTAL : <span id="order__price">${total}</span> €</strong>
     `;
 };
 
@@ -76,15 +76,18 @@ function clearStorage(){
 }
 
 
-
-
 function stockId(data){
     for (let i = 0 ; i < data.length; i++){
         products.push(data[i]._id);
     }
 }
 
-function submitForm(){
+const myForm = document.getElementById('myForm');
+
+myForm.addEventListener('submit', function(e) {
+
+    e.preventDefault();
+
     let contact = {
         "firstName": document.getElementById('firstName').value,
         "lastName": document.getElementById('lastName').value,
@@ -92,15 +95,33 @@ function submitForm(){
         "city": document.getElementById('city').value,
         "email": document.getElementById('email').value
     }
+
     console.log(contact, products);
-
     const toPost = {contact, products};
+    const orderPrice = document.getElementById('order__price').innerText;
+    console.log(orderPrice);
 
-    let post = new XMLHttpRequest();
-    post.open("POST", baseURL + "/cameras/order");
-    post.setRequestHeader("Content-Type", "application/json; charset=utf-8");
-    post.send(JSON.stringify(toPost))
+    // let post = new XMLHttpRequest();
+    // post.open("POST", baseURL + "/cameras/order");
+    // post.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+    // post.send(JSON.stringify(toPost))
 
+    fetch(baseURL + "/cameras/order" , {
+        method : 'POST',
+        headers : {"Content-Type" : "application/json; charset=utf-8"},
+        body : JSON.stringify(toPost)
+    })
     
-}
+    .then(reponse => reponse.json())
+    .then(reponseParsed => {
+        let orderId = reponseParsed.orderId;
+        if (orderId == undefined) {
+            alert('Veuillez remplir tous les champs de formulaire, chenapan !')
+        } else{
+            window.location.href = "order.html?orderId=" + orderId + "?price=" + orderPrice;
+            localStorage.clear();
+        }
+    })
+})
+
 

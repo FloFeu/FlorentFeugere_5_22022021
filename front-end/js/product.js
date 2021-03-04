@@ -86,7 +86,6 @@ function addToStorage(product){
   } 
   products.push(product);
   localStorage.setItem('products', JSON.stringify(products));
-  alert('Produit ajouté au panier!')
 }
 
 fetchDataProduct();
