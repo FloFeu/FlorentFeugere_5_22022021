@@ -3,8 +3,13 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    margin: 0 100px;
+  }
+  @include desktop{
+    margin-top: 6em;
   }
   .product {
+    
     box-shadow: 5px 5px 10px 0px #656565;
     border: 2px solid $bkgd-clr;
     display: grid;
@@ -20,6 +25,7 @@
         "img description";
     }
     @include desktop{
+        padding-bottom: 10px;
         width: 19%;
         grid-template-areas:
       "img"

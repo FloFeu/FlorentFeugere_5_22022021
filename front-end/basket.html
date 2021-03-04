@@ -49,7 +49,7 @@
 
       <section class="order">
         <h2>Rentrez vos coordonnées pour passer commande:</h2>
-        <form action="/order" method="POST">
+        <form method="POST">  
           <div class="form__firstName">
             <label for="firstName">Votre prénom: <span class="required">*</span></label>
             <input
@@ -109,7 +109,7 @@
             />
           </div>
           <div class="form__submit">
-            <input type="submit" value="Valider la commande"/>
+            <input  value="Valider la commande" onclick="submitForm()"/>
           </div>
         </form>
       </section>

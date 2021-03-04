@@ -83,6 +83,12 @@ footer .footer__a a {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    margin: 0 100px;
+  }
+}
+@media (min-width: 1025px) {
+  .list__products {
+    margin-top: 6em;
   }
 }
 .list__products .product {
@@ -103,6 +109,7 @@ footer .footer__a a {
 }
 @media (min-width: 1025px) {
   .list__products .product {
+    padding-bottom: 10px;
     width: 19%;
     grid-template-areas: "img" "description";
   }

@@ -1,6 +1,6 @@
 // Récupérer les données dans le localStorage
 let produitsPanier = [];
-
+const products = [];
 const storageProduit = localStorage.getItem('products');
 if (storageProduit != null) {
     document.getElementById('basketempty').style.display = "none";
@@ -29,7 +29,7 @@ function displayStorageToPage(data){
             <button class="basket__removeitem" id="removeItem" type="button" onclick="removeFromBasket(${i})">
                 <i class="far fa-trash-alt"></i>
             </button>
-            <div id="productIndex" class="nodisplay">  </div>
+            <div id="productId" class="nodisplay" value="${data[i]._id}">  </div>
  
         </div>
         `;
@@ -37,7 +37,9 @@ function displayStorageToPage(data){
     
     //appeler la fonction somme des prix
     displaySumOfPrices(data);
-
+    
+    //stocker les id
+    stockId(data);
 };
 
 
@@ -73,18 +75,32 @@ function clearStorage(){
     document.location.reload();
 }
 
-// Récupérer les infos du formulaire
 
 
 
+function stockId(data){
+    for (let i = 0 ; i < data.length; i++){
+        products.push(data[i]._id);
+    }
+}
 
 function submitForm(){
-    let formInfos = {
+    let contact = {
         "firstName": document.getElementById('firstName').value,
         "lastName": document.getElementById('lastName').value,
         "address": document.getElementById('address').value,
         "city": document.getElementById('city').value,
         "email": document.getElementById('email').value
     }
-    console.log(formInfos);
+    console.log(contact, products);
+
+    const toPost = {contact, products};
+
+    let post = new XMLHttpRequest();
+    post.open("POST", baseURL + "/cameras/order");
+    post.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+    post.send(JSON.stringify(toPost))
+
+    
 }
+
