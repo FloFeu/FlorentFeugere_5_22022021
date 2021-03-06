@@ -404,17 +404,26 @@ main .opening {
   }
 }
 .order form .form__submit input {
+  opacity: 0.8;
   text-align: center;
   background-color: #202020;
   color: white;
   border-radius: 15px;
   padding: 5px;
   border: none;
+  transition: opacity 100ms ease-in;
 }
 @media (min-width: 641px) {
   .order form .form__submit input {
     width: 100%;
   }
+}
+.order form .form__submit input:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+.order form .form__submit input:active {
+  transform: scale(0.9);
 }
 
 @media (min-width: 1025px) {

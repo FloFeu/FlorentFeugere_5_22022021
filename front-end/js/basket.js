@@ -1,6 +1,8 @@
 // Récupérer les données dans le localStorage
 let produitsPanier = [];
-const products = [];
+
+let products = [];
+
 const storageProduit = localStorage.getItem('products');
 if (storageProduit != null) {
     document.getElementById('basketempty').style.display = "none";
@@ -56,15 +58,20 @@ function displaySumOfPrices(data){
 };
 
 
+function stockId(data){
+    for (let i = 0 ; i < data.length; i++){
+        products.push(data[i]._id);
+    }
+}
 
 function removeFromBasket(element){
 console.log(element);                                    //récupération de l'indice du produit dans le tableau 
     const strProduct = localStorage.getItem('products'); //on récupère le localStorage
     products = JSON.parse(strProduct);                   //on le parse (products = JSON.parse(localStorage.getItem('products')) aurait marché aussi)
     products.splice(element, 1);
-    if (products.length == 0){
-        localStorage.clear();
-    } else{                        //on enlève de l'array l'élément grâce à son indice
+    if (products.length == 0){          // Si le panier ne contenait qu'un seul élément,
+        localStorage.clear();           // on clear le localStorage
+    } else{                                                         //on enlève de l'array l'élément grâce à son indice
         localStorage.setItem('products', JSON.stringify(products)); //On renvoie le nouvel array au localStorage
     }
     document.location.reload();                          //rafraichissement de la page
@@ -76,11 +83,8 @@ function clearStorage(){
 }
 
 
-function stockId(data){
-    for (let i = 0 ; i < data.length; i++){
-        products.push(data[i]._id);
-    }
-}
+
+console.log(products);
 
 const myForm = document.getElementById('myForm');
 
@@ -111,17 +115,20 @@ myForm.addEventListener('submit', function(e) {
         headers : {"Content-Type" : "application/json; charset=utf-8"},
         body : JSON.stringify(toPost)
     })
-    
     .then(reponse => reponse.json())
-    .then(reponseParsed => {
-        let orderId = reponseParsed.orderId;
-        if (orderId == undefined) {
-            alert('Veuillez remplir tous les champs de formulaire, chenapan !')
-        } else{
+        .then(reponseParsed => {
+            let orderId = reponseParsed.orderId;
+            if (orderId == undefined) {
+                alert('Veuillez remplir tous les champs de formulaire.')
+            } else{
             window.location.href = "order.html?orderId=" + orderId + "?price=" + orderPrice;
             localStorage.clear();
-        }
+         }
+        })
+        .catch(function(error){
+            console.log("Une erreur s'est produite pendant le traitement des données")
+        })
+    .catch(function(error) {
+        console.log('Erreur de communication avec le réseau')
     })
 })
-
-

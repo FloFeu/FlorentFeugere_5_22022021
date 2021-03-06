@@ -16,10 +16,13 @@ function fetchDataProduct(){
 
     fetch(productUrl)                   //récupérer l'id de l'API
     .then(reponse => reponse.json())    //traduire la réponse en JSON
-    .then((donneesProduit) => {         // La réponse, 
-        console.log(donneesProduit);    // l'afficher dans la console
-        displayProduct(donneesProduit); // et appeler la fonction displayProduct() déclarée en dessous.
-      })
+    .then((donneesProduit) => {         // Cette réponse, 
+      console.log(donneesProduit);    // l'afficher dans la console
+      displayProduct(donneesProduit); // et appeler la fonction displayProduct() déclarée en dessous.
+    })
+    .catch(function(error){
+      console.log("Il y a eu un problème avec la récupération de l'id")
+    })
 }
 
 //Fonction qui prend le résultat de la requête GET produit et l'affiche sur la page
