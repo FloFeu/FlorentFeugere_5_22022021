@@ -22,7 +22,7 @@ function getProducts(uri){
 function displayProducts(products){
     for ( var i = 0 ; i < products.length ; i++){
         document.querySelector(".list__products").innerHTML += `
-        <a href="product.html?id=${products[i]._id}" class="product">
+        <a href="product.html?id=${products[i]._id}" class="product"> 
           <img
             src="${products[i].imageUrl}"
             class="product__img"
@@ -40,3 +40,5 @@ function displayProducts(products){
 };
 
 getProducts('/cameras');
+
+console.log(getProducts)

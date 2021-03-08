@@ -11,18 +11,17 @@ const api = "http://localhost:3000/api/cameras/";
 const productUrl = api + urlId[1];
 
 
-//Requête API pour récupérer le produit et traduire le résultat en tableau
+//Récupérer les infos d'un produit depuis l'API
 function fetchDataProduct(){
-
-    fetch(productUrl)                   //récupérer l'id de l'API
-    .then(reponse => reponse.json())    //traduire la réponse en JSON
-    .then((donneesProduit) => {         // Cette réponse, 
-      console.log(donneesProduit);    // l'afficher dans la console
-      displayProduct(donneesProduit); // et appeler la fonction displayProduct() déclarée en dessous.
-    })
+  fetch(productUrl)                       //récupérer l'id de l'API
+    .then(reponse => reponse.json())      //traduire la réponse en JSON
+      .then((donneesProduit) => {         // Cette réponse, 
+        console.table(donneesProduit);    // l'afficher dans la console
+        displayProduct(donneesProduit);   // et appeler la fonction displayProduct() déclarée en dessous.
+      })
     .catch(function(error){
       console.log("Il y a eu un problème avec la récupération de l'id")
-    })
+  })
 }
 
 //Fonction qui prend le résultat de la requête GET produit et l'affiche sur la page
@@ -65,14 +64,15 @@ function displayProduct(data){
   console.log(data.lenses);
 };
 
+//Produit selectionné(avec son option) stocké dans une variable qui est passée en paramètre d'une autre fonction
 function addToCart(){
   if (document.getElementById("lense-select").value != ""){
    let thisProduct = {
-   "name": document.querySelector('h2').innerText,
-   "price": document.getElementById('productPrice').value,
-   "lense": document.getElementById("lense-select").value,
-   "imageUrl": document.querySelector('.details__img').src,
-   "_id": productId
+    name: document.querySelector('h2').innerText,
+    price: document.getElementById('productPrice').value,
+    lense: document.getElementById("lense-select").value,
+    imageUrl: document.querySelector('.details__img').src,
+    _id: productId
    }
    addToStorage(thisProduct);
    document.location.reload();
@@ -80,6 +80,8 @@ function addToCart(){
    alert('Veuillez choisir une lentille.')
  }
 }
+
+// Cette fonction récupère le produit affiché et l'envoi dans le localStorage
 
 function addToStorage(product){
   let products = [];

@@ -44,7 +44,7 @@ function displayStorageToPage(data){
     stockId(data);
 };
 
-
+//Fais la somme des prix des produits du panier et l'affiche
 function displaySumOfPrices(data){
     let total = 0;
     // Récupére la somme des prix
@@ -57,15 +57,16 @@ function displaySumOfPrices(data){
     `;
 };
 
-
+//Stock les id des produits dans le tableau products = [] 
 function stockId(data){
     for (let i = 0 ; i < data.length; i++){
         products.push(data[i]._id);
     }
 }
 
+
 function removeFromBasket(element){
-console.log(element);                                    //récupération de l'indice du produit dans le tableau 
+    console.log(element);                                    //récupération de l'indice du produit dans le tableau 
     const strProduct = localStorage.getItem('products'); //on récupère le localStorage
     products = JSON.parse(strProduct);                   //on le parse (products = JSON.parse(localStorage.getItem('products')) aurait marché aussi)
     products.splice(element, 1);
@@ -89,26 +90,21 @@ console.log(products);
 const myForm = document.getElementById('myForm');
 
 myForm.addEventListener('submit', function(e) {
-
     e.preventDefault();
-
     let contact = {
-        "firstName": document.getElementById('firstName').value,
-        "lastName": document.getElementById('lastName').value,
-        "address": document.getElementById('address').value,
-        "city": document.getElementById('city').value,
-        "email": document.getElementById('email').value
+        firstName : document.getElementById('firstName').value,
+        lastName: document.getElementById('lastName').value,
+        address: document.getElementById('address').value,
+        city: document.getElementById('city').value,
+        email: document.getElementById('email').value
     }
+    if (contact.firstName == "") {
+        alert('Champ du nom incorrect');
+        return false;
+    };
 
-    console.log(contact, products);
     const toPost = {contact, products};
     const orderPrice = document.getElementById('order__price').innerText;
-    console.log(orderPrice);
-
-    // let post = new XMLHttpRequest();
-    // post.open("POST", baseURL + "/cameras/order");
-    // post.setRequestHeader("Content-Type", "application/json; charset=utf-8");
-    // post.send(JSON.stringify(toPost))
 
     fetch(baseURL + "/cameras/order" , {
         method : 'POST',
@@ -128,7 +124,4 @@ myForm.addEventListener('submit', function(e) {
         .catch(function(error){
             console.log("Une erreur s'est produite pendant le traitement des données")
         })
-    .catch(function(error) {
-        console.log('Erreur de communication avec le réseau')
-    })
-})
+}) 
