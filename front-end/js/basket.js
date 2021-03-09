@@ -12,7 +12,7 @@ if (storageProduit != null) {
 } else {
     document.getElementById('itemsInBasket').style.display ="none";
     document.getElementById('basketempty').style.display = "block";
-}
+};
 
 function displayStorageToPage(data){
     for (let i = 0 ; i < data.length ; i++){
@@ -35,7 +35,7 @@ function displayStorageToPage(data){
  
         </div>
         `;
-    }
+    };
     
     //appeler la fonction somme des prix
     displaySumOfPrices(data);
@@ -53,7 +53,7 @@ function displaySumOfPrices(data){
     }
     console.log(total);
     document.querySelector(".basket__price").innerHTML += `
-    <strong> PRIX TOTAL : <span id="order__price">${total}</span> €</strong>
+        <strong> PRIX TOTAL : <span id="order__price">${total}</span> €</strong>
     `;
 };
 
@@ -62,28 +62,29 @@ function stockId(data){
     for (let i = 0 ; i < data.length; i++){
         products.push(data[i]._id);
     }
-}
+};
 
 
 function removeFromBasket(element){
     console.log(element);                                    //récupération de l'indice du produit dans le tableau 
-    const strProduct = localStorage.getItem('products'); //on récupère le localStorage
-    products = JSON.parse(strProduct);                   //on le parse (products = JSON.parse(localStorage.getItem('products')) aurait marché aussi)
-    products.splice(element, 1);
-    if (products.length == 0){          // Si le panier ne contenait qu'un seul élément,
-        localStorage.clear();           // on clear le localStorage
+    const strProduct = localStorage.getItem('products');     //on récupère le localStorage
+    products = JSON.parse(strProduct);                       //on le parse (products = JSON.parse(localStorage.getItem('products')) aurait marché aussi)
+    products.splice(element, 1);                             //
+if (products.length == 0){                                   // Si le panier ne contenait qu'un seul élément,
+        localStorage.clear();                                // on clear le localStorage
     } else{                                                         //on enlève de l'array l'élément grâce à son indice
         localStorage.setItem('products', JSON.stringify(products)); //On renvoie le nouvel array au localStorage
     }
     document.location.reload();                          //rafraichissement de la page
-}
+};
 
 function clearStorage(){
     localStorage.clear();
     document.location.reload();
-}
+};
 
-
+//Déclaration RegEx
+const regexMail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$/;
 
 console.log(products);
 
@@ -98,10 +99,11 @@ myForm.addEventListener('submit', function(e) {
         city: document.getElementById('city').value,
         email: document.getElementById('email').value
     }
-    if (contact.firstName == "") {
-        alert('Champ du nom incorrect');
+
+    if (regexMail.test(contact.email) == false ){
+        alert("Veuillez rentrer un format d'email valide");
         return false;
-    };
+    }
 
     const toPost = {contact, products};
     const orderPrice = document.getElementById('order__price').innerText;

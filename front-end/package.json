@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "sass-dev" : "sass --watch ./sass/main.scss:./styles/style.css"
+    "sass-dev" : "sass --watch ./sass/main.scss:./styles/style.css",
+    "sass-prod" : "sass --watch ./sass/main.scss:./styles/style-compressed.css --style compressed",
+    "prefix": "postcss ./styles/style-compressed.css --use autoprefixer -d ./styles/prefixed/"
   },
   "repository": {
     "type": "git",
@@ -12,6 +14,7 @@
   },
   "author": "",
   "license": "ISC",
+  "browserslist": "last 4 versions",
   "bugs": {
     "url": "https://github.com/FloFeu/FlorentFeugere_5_22022021/issues"
   },

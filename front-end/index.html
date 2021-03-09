@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="styles/style.css" />
+    <link rel="stylesheet" href="./styles/prefixed/style-compressed.css" />
     <link rel="icon" type="image/svg" href="./img/favicon.svg" />
 
     <script
@@ -33,9 +33,18 @@
       <section class="opening">
         <h1>Bienvenue sur Orinoco !</h1>
         <p>Parcourez notre catalogue d'appareils photo vintage !</p>
+        <noscript>
+          <br>
+          <h2>Votre navigateur n'est pas capable d'afficher le contenu du site.</h2>
+          <p>Veuillez mettre à jour votre navigateur.</p>
+        </noscript>
       </section>
       <section class="list__products">
 
+      </section>
+      <section class="serverIsDown">
+        <h2>Aucune réponse du serveur.</h2>
+        <p>Veuillez vérifier votre connexion ou contacter un administrateur du site pour accéder au contenu du site.</p>
       </section>
     </main>
     <footer>

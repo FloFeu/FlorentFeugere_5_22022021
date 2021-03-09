@@ -182,6 +182,12 @@ main .opening {
   margin-left: 0.5em;
   margin-right: 0.5em;
 }
+main .serverIsDown {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  display: none;
+}
 
 .details {
   box-shadow: 5px 5px 10px 0px #656565;

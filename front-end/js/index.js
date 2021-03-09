@@ -2,19 +2,25 @@
 // requête AJAX
 function getProducts(uri){
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', baseURL + uri ); 
+    xhr.open('GET', baseURL + uri );
     xhr.onreadystatechange = function(){
         if (xhr.readyState == 3){
             if (xhr.status == 200){
                 const response = JSON.parse(xhr.responseText);
                 console.log(response);
                 displayProducts(response);
-            } else {
+            } else{
                 console.log("une erreur s'est produite");
             }
-        }
+        } 
     };
     xhr.send();
+    
+    //Si le serveur ne répond pas 
+    xhr.onerror = function(){
+        console.log('impossible de se connecter au serveur');
+        document.querySelector('.serverIsDown').style.display = "block";
+    }
 }
 
 // chercher les résultats de la requête API et les traduire pour les afficher
@@ -39,6 +45,4 @@ function displayProducts(products){
     }
 };
 
-getProducts('/cameras');
-
-console.log(getProducts)
+getProducts('/cameras')
