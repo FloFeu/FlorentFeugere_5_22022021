@@ -45,4 +45,5 @@ function displayProducts(products){
     }
 };
 
+//Appel à la fonction avec '/cameras' passé en paramètre qui est l'uri que l'on veut
 getProducts('/cameras')

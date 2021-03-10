@@ -3,16 +3,18 @@ let produitsPanier = [];
 
 let products = [];
 
-const storageProduit = localStorage.getItem('products');
-if (storageProduit != null) {
+//Récupération du contenu du localStorage avec getItem
+const storageProduit = localStorage.getItem('products');            
+if (storageProduit != null) {                                       
     document.getElementById('basketempty').style.display = "none";
-    produitsPanier = JSON.parse(storageProduit);
-    displayStorageToPage(produitsPanier);
-    console.table(produitsPanier);
+    produitsPanier = JSON.parse(storageProduit);                    
+    displayStorageToPage(produitsPanier);                           
+    console.table(produitsPanier);                                  
 } else {
     document.getElementById('itemsInBasket').style.display ="none";
     document.getElementById('basketempty').style.display = "block";
 };
+
 
 function displayStorageToPage(data){
     for (let i = 0 ; i < data.length ; i++){
@@ -85,6 +87,7 @@ function clearStorage(){
 
 //Déclaration RegEx
 const regexMail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9._-]{2,}\.[a-z]{2,4}$/;
+const regexCity = /^([a-zA-Z\u0080-\u024F]+(?:. |-| |'))*[a-zA-Z\u0080-\u024F]*$/;
 
 console.log(products);
 
@@ -100,8 +103,8 @@ myForm.addEventListener('submit', function(e) {
         email: document.getElementById('email').value
     }
 
-    if (regexMail.test(contact.email) == false ){
-        alert("Veuillez rentrer un format d'email valide");
+    if (regexMail.test(contact.email) == false || regexCity.test(contact.city) == false ){
+        alert("Veuillez correctement renseigner l'entièreté du formulaire pour valider votre commande.");
         return false;
     }
 
